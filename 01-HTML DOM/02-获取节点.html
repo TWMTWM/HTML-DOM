@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<div id="d1">Hello HTML DOM</div>
+<div>Hello BOM</div>
+<div>Hello</div>
+<h1 class="d">Hello JavaScript</h1>
+<h2 class="d">Hello BOM</h2>
+<div class="d">Hello DOM</div>
+用户名：<input name="userName"><br>
+密码：<input name="userPassword"><br>
+<div id="d3" align="center" class="abc">Hello DOM</div>
+<div id="d4" align="left" class="bdc">Hello DOM</div>
+<script type="text/javascript">
+	function print(s){
+		document.write(s);
+		document.write("<br>");
+	}
+	//1、根据id获取元素节点:document.getElementById("d1");
+	document.write("<h3>1、根据id获取元素节点:document.getElementById('d1');</h3>");
+	var div1 = document.getElementById("d1");
+	print(div1);
+	//2、通过标签名获取元素节点:document.getElementsByTagName("div");
+	document.write("<h3>2、通过标签名获取元素节点：document.getElementsByTagName('div');</h3>");
+	var divs = document.getElementsByTagName("div");
+	for(i=0;i<divs.length;i++){
+		print(divs[i]);
+	}
+	//3、通过类名获取元素节点：document.getElementsByClassName("d");
+	document.write("<h3>3、通过类名获取元素节点：document.getElementsByClassName('d');</h3>");
+	var elements01 = document.getElementsByClassName("d");
+	for(i=0;i<elements01.length;i++){
+		print(elements01[i]);
+	}
+	//4、通过表单元素的name获取元素节点：document.getElementsByName('userName');
+	document.write("<h3>4、通过表单元素的name获取元素节点：document.getElementsByName('userName');</h3>");
+	var elements02 = document.getElementsByName("userName");
+	var elements03 = document.getElementsByName("userPassword");
+	for(i=0;i<elements02.length;i++){
+		print(elements02[i]);
+	}
+	print("elements02的长度：" + elements02.length);
+	print("elements03：" + elements03);
+	//5、为什么获取不到
+	document.write("<h3>5、为什么获取不到</h3>");
+	var div2 = document.getElementById("d2");
+	print(div2);
+	print("<p>参考本例代码，和通过id获取元素节点同样的代码 document.getElementById却无法获取元素节点。这是因为javascript是解释语言，是顺序执行的。 在执行到 document.getElementById的时候，div标签还没有加载，所以无法获取。</p>");
+	//6、获取属性节点：通过元素节点的attributes获取其下所有的属性节点
+	document.write("<h3>6、获取属性节点：通过元素节点的attributes获取其下所有的属性节点</h3>");
+	var div3 = document.getElementById("d3");
+	var as = div3.attributes;
+	print("div总共有：" + as.length + "个属性");
+	print("分别是：");
+	for(i=0;i<as.length;i++){
+		print(as[i].nodeName + ":" + as[i].nodeValue);
+	}
+	print("<br>");
+	print("div的id的属性值是：" + as["id"].nodeValue);
+	//7、获取内容节点
+	document.write("<h3>7、获取内容节点</h3>");
+	var div4 = document.getElementById("d4");
+	var content = div4.childNodes[0];
+	print("div的内容节点名是：" + content.nodeName);
+	print("div的内容节点值是：" + content.nodeValue);
+</script>
+</head>
+<body>
+	<div id = "d2">Hello HTML DOM</div>
+</body>
+</html>

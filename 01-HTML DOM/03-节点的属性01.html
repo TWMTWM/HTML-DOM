@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<div id="d1">Hello HTML DOM 1</div>
+<div id="d2">Hello HTML DOM 2</div>
+<div id="d3">Hello HTML DOM 3</div>
+<div id="d4">Hello HTML DOM 4</div>
+<button onclick="changeDiv1()">通过内容节点方式改变div的内容:childNodes[0].nodeValue</button>
+<button onclick="changeDiv2()">通过innerHTML改变div的内容</button>
+<br>
+<div id="d5">Hello HTML DOM 5</div>
+<input id="input1" class="class1 class2" test="t1" value="这是一个输入框">
+<br>
+<button onclick="get()">获取input的属性</button>
+<div style="height:30px"></div>
+<script type="text/javascript">
+	function print(s){
+		document.write(s);
+		document.write("<br>");
+	}
+	//1、节点名称：nodeName
+	document.write("<h3>1、节点名称：nodeName</h3>");
+	var div1 = document.getElementById("d1");
+	print("document的节点名称：" + document.nodeName);
+	print("div元素节点的节点名称：" + div1.nodeName);
+	print("div下属性节点的节点名称：" + div1.attributes[0].nodeName);
+	print("div下内容节点的节点名称：" + div1.childNodes[0].nodeName);
+	//2、节点值
+	document.write("<h3>2、节点值：nodeValue</h3>");
+	var div2 = document.getElementById("d2");
+	print("document是没有nodeValue的：" + document.nodeValue);
+	print("元素节点是没有nodeValue的：" + div2.nodeValue);
+	print("属性节点id的nodeValue：" + div2.attributes[0].nodeValue);
+	print("内容节点的nodeValue：" + div2.childNodes[0].nodeValue);
+	//3、节点类型
+	document.write("<h3>3、节点类型：nodeType</h3>");
+	var div3 = document.getElementById("d3");
+	print("document的nodeType是：" + document.nodeType);
+	print("元素节点的nodeType是：" + div3.nodeType);
+	print("属性节点的nodeType是：" + div3.attributes[0].nodeType);
+	print("内容节点的nodeType是：" + div3.childNodes[0].nodeType);
+	//4、元素的文本内容
+	document.write("<h3>4、元素的文本内容：childNodes[0].nodeValue或者innerHTML</h3>");
+	function changeDiv1(){
+		document.getElementById("d4").childNodes[0].nodeValue = "通过childNodes[0].nodeValue改变内容";
+	}
+	function changeDiv2(){
+		document.getElementById("d4").innerHTML = "通过innerHTML改变内容";
+	}
+	//5、元素上的属性
+	document.write("<h3>5、元素上的属性</h3>");
+	var div5 = document.getElementById("d5");
+	print("div5.id：" + div5.id);
+	print("div5.attributes[0].nodeValue：" + div5.attributes[0].nodeValue);
+	print("div5.id"+"和" + "div5.attributes[0].nodeValue" + "都可以获取元素属性的值");
+	print("----------------------------------------------------------------------");
+	var input1 = document.getElementById("input1");
+	print("input1.id：" + input1.id);
+	print("input1.className：" + input1.className);
+	print("input1.value：" + input1.value);
+	print("test这个属性是自定义的，通过如下2种方式获取：");
+	print("input1.getAttribute('test')：" + input1.getAttribute("test"));
+	print("input1.attributes['test'].nodeValue：" + input1.attributes["test"].nodeValue);
+	//print("input1.test：" + input1.test);
+	print("<br>");
+	print("input1.attributes[0].nodeValue：" + input1.attributes[0].nodeValue);
+	print("input1.attributes[1].nodeValue：" + input1.attributes[1].nodeValue);
+	print("input1.attributes[2].nodeValue：" + input1.attributes[2].nodeValue);
+	print("input1.attributes[3].nodeValue：" + input1.attributes[3].nodeValue);	
+</script>
+</head>
+<body>
+
+</body>
+</html>
